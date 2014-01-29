@@ -1,0 +1,19 @@
+<b> Welcome Ballers</b>
+<div> 
+	<%= button_tag "Show Profile", class: "btn btn-primary", id: "balling_button" %>
+</div>
+
+
+
+<div id="balling_baby" style="display:none"> 
+	We balling baby
+</div>  
+
+
+<script> 
+	$(document).ready(function(){
+		$("#balling_button").click(function() {
+		  $("#balling_baby").show(); 
+		});
+	}); 
+</script> 

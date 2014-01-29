@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TestingProofOfConcept</title>
+<link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet">
+<script data-turbolinks-track="true" src="/assets/application.js"></script>
+</head>
+<body>
+
+<div id="user_nav">
+    <a href="/users/sign_up">Sign up</a> or <a href="/users/sign_in">sign in</a>
+</div>
+
+<h2>Sign in</h2>
+
+<form accept-charset="UTF-8" action="/users/sign_in" class="new_user" id="new_user" method="post">
+<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+  <div>
+<label for="user_email">Email</label><br><input autofocus="autofocus" id="user_email" name="user[email]" type="email" value="billywalker@gmail.com">
+</div>
+
+  <div>
+<label for="user_password">Password</label><br><input id="user_password" name="user[password]" type="password">
+</div>
+
+    <div>
+<input name="user[remember_me]" type="hidden" value="0"><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"><label for="user_remember_me">Remember me</label>
+</div>
+
+  <div><input class="btn btn-primary" name="commit" type="submit" value="Sign in"></div>
+</form>
+
+  <a href="/users/sign_up">Sign up</a><br><a href="/users/password/new">Forgot your password?</a><br>
+</body>
+</html>
