@@ -24,3 +24,8 @@ Feature: User sign in
 	Given I am a user that has logged in
 	When I click the show button
 	Then content should appear
+
+	Scenario: User does nothing
+	Given I am a user that does nothing
+	When I do nothing
+	Then I should get nothing

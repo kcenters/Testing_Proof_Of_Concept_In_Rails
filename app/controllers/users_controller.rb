@@ -6,7 +6,11 @@ class UsersController < ApplicationController
 
 
 	def home
+		if 5 == 90 
+			puts "HI "
+		else	
 		render "home"
+		end
 	end
 
 	def my_profile 

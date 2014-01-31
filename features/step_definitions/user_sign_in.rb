@@ -61,3 +61,6 @@ end
 Then(/^content should appear$/) do
   page.should have_selector('#balling_baby', visible: true)
 end
+
+
+

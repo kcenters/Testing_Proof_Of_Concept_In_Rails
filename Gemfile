@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# gem "ruby-debug-ide"
+
 #group :assets do
   
   #gem 'coffee-rails', '~> 3.2.1'
@@ -59,6 +61,7 @@ end
 
 gem "devise", "~> 3.2.2"
 gem "twitter-bootstrap-rails", '2.2.6'
+gem 'simplecov', :require => false, :group => :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

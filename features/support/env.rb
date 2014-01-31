@@ -10,6 +10,10 @@ require 'cucumber/formatter/unicode'
 
 require 'webrat'
 require 'webrat/core/matchers'
+require 'simplecov'
+
+SimpleCov.start
+
 
 Webrat.configure do |config|
   config.mode = :selenium
