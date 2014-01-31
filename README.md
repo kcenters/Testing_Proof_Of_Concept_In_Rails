@@ -103,6 +103,73 @@ validates_presence_of :last_name
 Now when you run bundle exec rspec again all your tests will pass. Congrats. 
 
 
+Cucumber
+==========
+1) In your features/support/env.rb file add the following lines
+
+require 'cucumber/formatter/unicode'
+
+require 'webrat'
+require 'webrat/core/matchers'
+require 'simplecov'
+
+SimpleCov.start
+
+
+Webrat.configure do |config|
+  config.mode = :selenium
+  config.application_framework = :external
+  config.selenium_server_address = '127.0.0.1'
+    # if RbConfig::CONFIG['host_os'] =~ /mingw|mswin/
+  config.selenium_browser_startup_timeout = 60
+  config.application_address = 'localhost'
+  config.application_port = '3000'
+end
+
+
+This setups up the testing envrionment for Selenium using Webrat Also add : 
+
+apybara.register_driver :javascript do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+end
+
+
+This will configure your selenium enviornment to run a firefox browser. If you want it to run in chrome you can chance :firefox to :chrome.
+
+2) Now in the features directory you can create a feature file. In this case I called it user_sign_in.feature. Add the following scenarios: 
+
+Feature: User sign in
+	User goes to sign in page and signs in
+
+	Scenario: User that doesn't exist can't sign in
+	Given I am a non-existant user on the sign in page
+	And I have not registered for the site 
+	When I try to log in 
+	Then I should be denied access
+
+
+	Scenario: User signs in successfully 
+	Given I am a user that exists
+	When I try to log in 
+	Then I should be redirected to the my profile page 
+
+
+	Scenario: User can't access the My Profile page when not signed in
+	Given I am a non-existant user on the sign in page
+	When I try to access the my_profile page
+	Then I should be redirected to the sign in page
+
+	@javascript
+	Scenario: User is signed in and uses javascript
+	Given I am a user that has logged in
+	When I click the show button
+	Then content should appear
+
+
+3) The @javscript will run that particular test in selenium. Now when you run bundle exec cucumber. It will print out the steps to paste in your feature file. Create a feature file called user_sign_in.rb in the features/step_definitions directory and paste the code in there. I've provided the code in the repository needed to get the tests to pass. You can use that as reference testing your cucumbers until they pass. 
+
+
+
 
 
 
